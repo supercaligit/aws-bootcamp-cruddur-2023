@@ -38,8 +38,8 @@
    ![Well Architected Tool](/journal/images/Week0-Well-Architected%20Tool.png)
 4. Create an architectural diagram (to the best of your ability) the CI/CD logical pipeline in Lucid Charts
     Cruddur Logical Diagram (https://lucid.app/lucidchart/24d50af4-522a-45e9-9c3d-c8eed74bc2aa/edit?view_items=jcjxtnjjyBer&invitationId=inv_5947252d-342b-43cf-8d25-eba34828548c)
-5. Research the technical and service limits of specific services and how they could impact the technical path for technical flexibility. 
-6. Open a support ticket and request a service limit
+5. ~~Research the technical and service limits of specific services and how they could impact the technical path for technical flexibility. ~~
+6. ~~Open a support ticket and request a service limit~~
 
 ## Bonus
 ![Napkin Design](/journal/images/week0-NapkinDesign.jpg)
