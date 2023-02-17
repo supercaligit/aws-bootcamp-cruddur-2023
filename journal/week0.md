@@ -30,13 +30,14 @@
 2. Use EventBridge to hookup Health Dashboard to SNS and send notification when there is a service health issue.
    (ref:https://docs.aws.amazon.com/health/latest/ug/cloudwatch-events-health.html)
     
-    ![](/journal/images/Week0-images/Week0-Amazon%20EventBridge.png)
+    ![Event Bridge](/journal/images/Week0-images/Week0-Amazon%20EventBridge.png)
     
-     ![](/journal/images/Week0-Amazon%20EventBridge-SNSTopic.png)
+     ![Event Bridge](/journal/images/Week0-Amazon%20EventBridge-SNSTopic.png)
     
 3. Review all the questions of each pillars in the Well Architected Tool (No specialized lens)
+   ![Well Architected Tool](/journal/images/Week0-Well-Architected%20Tool.png)
 4. Create an architectural diagram (to the best of your ability) the CI/CD logical pipeline in Lucid Charts
-Cruddur Logical Diagram (https://lucid.app/lucidchart/24d50af4-522a-45e9-9c3d-c8eed74bc2aa/edit?view_items=jcjxtnjjyBer&invitationId=inv_5947252d-342b-43cf-8d25-eba34828548c)
+    Cruddur Logical Diagram (https://lucid.app/lucidchart/24d50af4-522a-45e9-9c3d-c8eed74bc2aa/edit?view_items=jcjxtnjjyBer&invitationId=inv_5947252d-342b-43cf-8d25-eba34828548c)
 5. Research the technical and service limits of specific services and how they could impact the technical path for technical flexibility. 
 6. Open a support ticket and request a service limit
 
