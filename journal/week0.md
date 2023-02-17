@@ -30,9 +30,9 @@
 2. Use EventBridge to hookup Health Dashboard to SNS and send notification when there is a service health issue.
    (ref:https://docs.aws.amazon.com/health/latest/ug/cloudwatch-events-health.html)
     
-    ![Event Bridge](/journal/images/Week0-images/Week0-Amazon%20EventBridge.png)
+    ![Event Bridge](/journal/images/Week0-Amazon%20EventBridge.png)
     
-     ![Event Bridge](/journal/images/Week0-Amazon%20EventBridge-SNSTopic.png)
+    ![Event Bridge](/journal/images/Week0-Amazon%20EventBridge-SNSTopic.png)
     
 3. Review all the questions of each pillars in the Well Architected Tool (No specialized lens)
    ![Well Architected Tool](/journal/images/Week0-Well-Architected%20Tool.png)
