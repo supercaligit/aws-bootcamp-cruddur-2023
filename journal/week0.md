@@ -26,7 +26,11 @@
 
 ## Homework Stretch Assignments
 1. Destroy your root account credentials, Set MFA, IAM role
+- created IAM Role and setup MFA
 2. Use EventBridge to hookup Health Dashboard to SNS and send notification when there is a service health issue.
+(ref:https://docs.aws.amazon.com/health/latest/ug/cloudwatch-events-health.html)
+![Event Bridge 1](/journal/images/Week0-Amazon EventBridge.png)
+![Event Bridge 2](/journal/images/Week0-Amazon EventBridge-SNSTopic.png)
 3. Review all the questions of each pillars in the Well Architected Tool (No specialized lens)
 4. Create an architectural diagram (to the best of your ability) the CI/CD logical pipeline in Lucid Charts
 Cruddur Logical Diagram (https://lucid.app/lucidchart/24d50af4-522a-45e9-9c3d-c8eed74bc2aa/edit?view_items=jcjxtnjjyBer&invitationId=inv_5947252d-342b-43cf-8d25-eba34828548c)
@@ -59,6 +63,20 @@ export AWS_DEFAULT_REGION="{value of region}"
 ```
 export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text )
 ```
+
+## Pricing Module - Chirag
+- AWS services varies according to region. Always select region where you want to spin up service
+- Bill will be in USD and local currency
+- Conversion rate applies on date of invoice with latest exchange rate
+- 750 Hours free utilization 
+- AWS Billing Alerts vs AWS Budgets
+    AWS Billing Alerts is an older feature released in 2012 that leverages Amazon Cloudwatch alarm and metrics to monitor charges and Amazon SNS to send email alerts. It was AWS first attempt to provide proactive alerting and alarms on your total AWS charges or a specific AWS service. The feature is relatively basic when it comes to pure costs/budgeting and there isn’t a way to setup in-depth budget monitoring with the filters you have in Cost Explorer.On the flip-side, since it is uses CloudWatch, you can create an alarm that correlates between RDS CPU utilization and it’s total monthly budget. The same can be applied across many other CloudWatch metrics.
+
+    AWS Budgets -Released 7 years later in 2019, AWS Budgets builds upon AWS billing alerts and is integrated into Amazon’s billing dashboard. Overall, it provides a better and more robust way to monitor your AWS costs. All the dimensions you are familiar with in Cost Explorer can be developed into monitoring daily / weekly or monthly AWS Budgets via email. In addition, AWS Budgets gives you a way to trigger specific event if a threshold is reach through “Budget Actions”.
+- AWS Cost Explorer
+    AWS Cost Explorer has an easy-to-use interface that lets you visualize, understand, and manage your AWS costs and usage over time.
+
+## Security Module - Ashish
 - Organization Unit
     - acts like a governor 
     - offered as part of Organization service
@@ -90,5 +108,8 @@ export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output tex
 
 - Enable AWS Organization SCP(service control policies)
     - example policies in https://github.com/hashishrajan/aws-scp-best-practice-policies
+
+- What's the difference between an AWS Organizations service control policy and an IAM policy?
+    https://aws.amazon.com/premiumsupport/knowledge-center/iam-policy-service-control-policy/
 
 -
