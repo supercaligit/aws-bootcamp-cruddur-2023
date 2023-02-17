@@ -37,7 +37,8 @@ Cruddur Logical Diagram (https://lucid.app/lucidchart/24d50af4-522a-45e9-9c3d-c8
 5. Research the technical and service limits of specific services and how they could impact the technical path for technical flexibility. 
 6. Open a support ticket and request a service limit
 
-
+## Bonus
+![Napkin Design](/journal/images/week0-NapkinDesign.jpg)
 
 ## Misc Notes
 - /usr/bin - system installs  vs /usr/local/bin - logged in user install
