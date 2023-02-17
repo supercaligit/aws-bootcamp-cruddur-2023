@@ -29,12 +29,10 @@
 - created IAM Role and setup MFA
 2. Use EventBridge to hookup Health Dashboard to SNS and send notification when there is a service health issue.
    (ref:https://docs.aws.amazon.com/health/latest/ug/cloudwatch-events-health.html)
-   
-   
-    ![Event Bridge 1](/journal/images/Week0-Amazon EventBridge.png)
     
+    ![](/journal/images/Week0-images/Week0-Amazon%20EventBridge.png)
     
-    ![Event Bridge 2](/journal/images/Week0-Amazon EventBridge-SNSTopic.png)
+     ![](/journal/images/Week0-Amazon%20EventBridge-SNSTopic.png)
     
 3. Review all the questions of each pillars in the Well Architected Tool (No specialized lens)
 4. Create an architectural diagram (to the best of your ability) the CI/CD logical pipeline in Lucid Charts
