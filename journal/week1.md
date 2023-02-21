@@ -6,8 +6,11 @@
 ![Frontend](/journal/images/Week%201-%20FrontEndpoint.png)
 ![Backend](/journal/images/Week%201-%20BackEndpoint.png)
 3. OpenAPI (ref:readme.com)
-![Backend](/journal/images/Week1-OpenAPI.png)
-
+![OpenAPI](/journal/images/Week1-OpenAPI.png)
+4. Notifications Backend Endpoint
+![NotificaitonsBack](/journal/images/Week1-NotificationsEndpoint.png)
+5. Notifications Front end React page
+![NotificationsPage](/journal/images/Week1-NotificationsPage.png)
 
 ## Homework Challenges
 1. Run the dockerfile CMD as an external script
