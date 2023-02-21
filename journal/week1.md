@@ -4,6 +4,7 @@
 1. Create a docker file for front end and back end and ensure it can run individually 
 2. Create a docker-compose file, which will combine the two docker files and launch both front end and back end. 
 ![Frontend](/journal/images/Week%201-%20FrontEndpoint.png)
+</br>
 ![Backend](/journal/images/Week%201-%20BackEndpoint.png)
 3. OpenAPI (ref:readme.com)
 ![OpenAPI](/journal/images/Week1-OpenAPI.png)
