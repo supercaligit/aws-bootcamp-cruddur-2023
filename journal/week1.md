@@ -4,9 +4,9 @@
 1. Create a docker file for front end and back end and ensure it can run individually
 
 2. Create a docker-compose file, which will combine the two docker files and launch both front end and back end. 
-![Frontend](/journal/images/Week%201-%20FrontEndpoint.png)
+![Frontend](/journal/images/Week1-FrontEndpoint.png)
 
-![Backend](/journal/images/Week%201-%20BackEndpoint.png)
+![Backend](/journal/images/Week1-BackEndpoint.png)
 
 3. OpenAPI (ref:readme.com)
 ![OpenAPI](/journal/images/Week1-OpenAPI.png)
@@ -16,6 +16,11 @@
 
 5. Notifications Front end React page
 ![NotificationsPage](/journal/images/Week1-NotificationsPage.png)
+
+6. Run DynamoDB Local Container and ensure it works
+
+7. Run Postgres Container and ensure it works
+![Postgres](/journal/images/Week1-PostgresInstall.png)
 
 ## Homework Challenges
 1. Run the dockerfile CMD as an external script
