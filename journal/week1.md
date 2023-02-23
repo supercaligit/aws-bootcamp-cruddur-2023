@@ -24,7 +24,8 @@
 
 ## Homework Challenges
 1. Run the dockerfile CMD as an external script
-2. Push and tag a image to DockerHub (they have a free tier)
+2. Push and tag an image to DockerHub (they have a free tier)
+![PushImageDockerHub](/journal/images/Week1-PushImageDockerHub.png)
 3. Use multi-stage building for a Dockerfile build
 4. Implement a healthcheck in the V3 Docker compose file
 5. Research best practices of Dockerfiles and attempt to implement it in your Dockerfile
