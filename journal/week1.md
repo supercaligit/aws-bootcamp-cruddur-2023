@@ -25,12 +25,42 @@
 ## Homework Challenges
 1. Run the dockerfile CMD as an external script
 2. Push and tag an image to DockerHub (they have a free tier)
+```sh
+docker images
+
+docker login --username={username} --password={password}
+
+REPOSITORY                                    TAG         IMAGE ID       CREATED         SIZE
+aws-bootcamp-cruddur-2023-frontend-react-js   latest      88c505216b54   2 minutes ago   1.19GB
+aws-bootcamp-cruddur-2023-backend-flask       latest      cee0217b9b42   3 minutes ago   129MB
+postgres                                      13-alpine   55f14697b527   12 days ago     238MB
+amazon/dynamodb-local                         latest      904626f640dc   3 weeks ago     499MB
+
+
+docker tag cee0217b9b42 supercali/aws-bootcamp-cruddur-2023:backend
+docker tag 88c505216b54 supercali/aws-bootcamp-cruddur-2023:frontend
+docker tag 55f14697b527 supercali/aws-bootcamp-cruddur-2023:postgres
+docker tag 904626f640dc supercali/aws-bootcamp-cruddur-2023:dynamodb
+
+
+docker push supercali/aws-bootcamp-cruddur-2023:backend
+docker push supercali/aws-bootcamp-cruddur-2023:frontend
+docker push supercali/aws-bootcamp-cruddur-2023:postgres
+docker push supercali/aws-bootcamp-cruddur-2023:dynamodb
+```
+
 Ref: https://jsta.github.io/r-docker-tutorial/04-Dockerhub.html
 ![PushImageDockerHub](/journal/images/Week1-PushImageDockerHub.png)
-3. Use multi-stage building for a Dockerfile build
-4. Implement a healthcheck in the V3 Docker compose file
-5. Research best practices of Dockerfiles and attempt to implement it in your Dockerfile
-6. Learn how to install Docker on your localmachine and get the same containers running outside of Gitpod / Codespaces
+
+3. Learn how to install Docker on your localmachine and get the same containers running outside of Gitpod / Codespaces
+This was definitely a reach attempt today. It took a lot of trial and error to figure out why the container was not running locally but I was finally able to get it working. 
+![PushImageDockerHub](/journal/images/Week1-RunDockerImagesLocalMachine.png)
+![PushImageDockerHub](/journal/images/Week1-DockerDesktop-Containers.png)
+![PushImageDockerHub](/journal/images/Week1-RunningBackEndLocalMachine.png)
+
+4. Use multi-stage building for a Dockerfile build
+5. Implement a healthcheck in the V3 Docker compose file
+6. Research best practices of Dockerfiles and attempt to implement it in your Dockerfile
 7. Launch an EC2 instance that has docker installed, and pull a container to demonstrate you can run your own docker processes. 
 
 ## Misc Notes
