@@ -24,6 +24,7 @@
 
 ## Homework Challenges
 1. Run the dockerfile CMD as an external script
+(Ref:https://devopscube.com/run-scripts-docker-arguments/)
 Create a new file script.sh copy following in it
 ```sh
 python3 -m flask run --host=0.0.0.0 --port=4567
@@ -81,7 +82,10 @@ This was definitely a reach attempt today. It took a lot of trial and error to f
 ![PushImageDockerHub](/journal/images/Week1-RunDockerImagesLocalMachine.png)
 ![PushImageDockerHub](/journal/images/Week1-DockerDesktop-Containers.png)
 ![PushImageDockerHub](/journal/images/Week1-RunningBackEndLocalMachine.png)
+```sh
+docker run --rm -p 4567:4567 -it  -e FRONTEND_URL -e BACKEND_URL -d supercali/aws-bootcamp-cruddur-2023:backend
 
+```
 4. Use multi-stage building for a Dockerfile build
 5. Implement a healthcheck in the V3 Docker compose file
 6. Research best practices of Dockerfiles and attempt to implement it in your Dockerfile
@@ -89,9 +93,9 @@ This was definitely a reach attempt today. It took a lot of trial and error to f
 
 ## Misc Notes
 
-### Backend build and run
 
-### Run Python
+
+### Backend build and run
 
 Run standalone outside of Docker
 ```sh
@@ -155,4 +159,52 @@ Run front end
 ```sh
 docker run -p 3000:3000 -d frontend-react-js
 ```
+
+changes to docker-compose.yaml
+Ref:https://stackoverflow.com/questions/30043872/docker-compose-node-modules-not-present-in-a-volume-after-npm-install-succeeds
+```sh
+volumes:
+  - ./frontend-react-js:/frontend-react-js
+  - /frontend-react-js/node_modules
+```
+
+![DockerCompose](/journal/images/Week1-DockerCompose.png)
+
+
+## Pricing Module - Chirag
+- Gitpod 
+    - 50 hours,4 core, 8GB RAM, 30GB storage. 
+    - Inactivity Timeout-30 mins
+    - Avoid multiple environments. Users will be aggregated
+- GitHub 
+    - 60hrs-2 core,4GB RAM,15GB storage 
+    - 30hrs-4core,8GB RAM,15GB Storage
+- AWS Cloud9 - T2.Micro free for monthbut avoid using if using t2.micro 
+- CloudTrail - avoid setting up. Avoid data events, insights
+
+
+
+## Security Module - Ashish
+- Container Security
+    - security the applciations running as security
+    - Container First Strategy - isolate OS from packaging of application
+    - Managed Container service = ECS, ECR
+        - you are limited by features provided by provider
+    - Unmanaged Container service - you local machine
+        - you are limited by having to manage the service.
+    - reducing breach impact
+    - recovery is faster with container developement
+    - TOP 10 Container Security
+        - keep host and machine updated to latest patch
+        - docker deamon and container should be runnign as non-root user. Container Escape Vulnerability
+        - Image vulnerability Scanning - container should be super lightweight,10-100MB
+        - Private or Public Image Registry.
+        - No sensitive data in docker image
+        - use secret management service 
+        - read only file system fo Docker
+        - separate database for long term storage
+        - use DevOpSecs practices to check application security
+        - test all code for vulnerabilities
+    - SNYK container security
+        
 
