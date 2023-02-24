@@ -24,6 +24,30 @@
 
 ## Homework Challenges
 1. Run the dockerfile CMD as an external script
+Create a new file script.sh copy following in it
+```sh
+python3 -m flask run --host=0.0.0.0 --port=4567
+```
+
+Modify the Docker file in backend-flask, replace CMD command with lines below
+```sh
+#CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567"]
+
+COPY script.sh script.sh
+RUN chmod +x script.sh
+ENTRYPOINT ./script.sh
+```
+
+Build the docker file
+```sh
+dockebuild -t  backend-flask ./backend-flask
+```
+
+Run the docker file
+```sh
+docker run --rm -p 4567:4567 -it -e FRONTEND_URL='*' -e BACKEND_URL='*' backend-flask
+```
+
 2. Push and tag an image to DockerHub (they have a free tier)
 ```sh
 docker images
@@ -67,12 +91,28 @@ This was definitely a reach attempt today. It took a lot of trial and error to f
 
 ### Backend build and run
 
-Build backend
+### Run Python
+
+Run standalone outside of Docker
+```sh
+cd backend-flask
+pip3 install -r requirements.txt
+python3 -m flask run --host=0.0.0.0 --port=4567
+cd ..
+```
+
+- make sure to unlock the port on the port tab
+- open the link for 4567 in your browser
+- append to the url to `/api/activities/home`
+- you should get back json
+
+
+Build backend using Docker
 ```sh
 docker build -t  backend-flask ./backend-flask
 ```
 
-Run backend
+Run backend using Docker
 ```sh
 docker run --rm -p 4567:4567 -it -e FRONTEND_URL='*' -e BACKEND_URL='*' backend-flask
 
@@ -81,6 +121,10 @@ export BACKEND_URL="*"
 docker run --rm -p 4567:4567 -it  -e FRONTEND_URL -e BACKEND_URL backend-flask
 unset FRONTEND_URL="*"
 unset BACKEND_URL="*"
+
+OR
+
+docker run --rm -p 4567:4567 -it -e FRONTEND_URL='*' -e BACKEND_URL='*' backend-flask
 ```
 
 Run in background
