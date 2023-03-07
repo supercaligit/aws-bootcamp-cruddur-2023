@@ -5,20 +5,26 @@ OpenTelemetry is a vendor neutral open source standard.
 
 ## **Required Homework**
 
-### **Distrbuted Tracing with Honeycomb**
+### **Distributed Tracing with Honeycomb**
 **Instrument our backend flask application to use Open Telemetry (OTEL) with Honeycomb.io as the provider**
     ![Honeycomb Trace](/journal/images/Week2-Backend_Trace_Honeycomb.png)
 **Run queries to explore traces within Honeycomb.io**
     ![Honeycomb Query](/journal/images/Week2-Query_Honeycomb.png)
 
 ### **Distrbuted Tracing with AWS Xray**
+
 **Instrument AWS X-Ray into backend flask application**
+
 **Configure and provision X-Ray daemon within docker-compose and send data back to X-Ray API**
+
 **Observe X-Ray traces within the AWS Console**
+
     ![XRay Trace](/journal/images/Week2-XRay%20Trace.png)
 
 ### **Logging with Rollbar**
+
 **Integrate Rollbar for Error Logging**
+
 **Trigger an error an observe an error with Rollbar**
 
 ### **Logging with AWS CloudWatch**
