@@ -18,7 +18,6 @@ OpenTelemetry is a vendor neutral open source standard.
 **Configure and provision X-Ray daemon within docker-compose and send data back to X-Ray API**
 
 **Observe X-Ray traces within the AWS Console**
-
     ![XRay Trace](/journal/images/Week2-XRay%20Trace.png)
 
 ### **Logging with Rollbar**
@@ -38,7 +37,6 @@ OpenTelemetry is a vendor neutral open source standard.
 **Add custom instrumentation to Honeycomb to add more attributes eg. UserId, Add a custom span**
 
 **Run custom queries in Honeycomb and save them later eg. Latency by UserID, Recent Traces**
-
     ![Honeycomb Query](/journal/images/Week2-SaveQuery_Honeycomb.io.png)
 
 **Setup segments and subsegments in XRay**
