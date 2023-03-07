@@ -40,37 +40,39 @@ OpenTelemetry is a vendor neutral open source standard.
     ![Honeycomb Query](/journal/images/Week2-SaveQuery_Honeycomb.io.png)
 
 **Setup segments and subsegments in XRay**
-    
-    So I tried to figure this out on my own. https://docs.aws.amazon.com/xray-sdk-for-python/latest/reference/basic.html was a useful resource. In referring that I realised that there was no need to declare segments. we only need to create segments if the framework does not support them. The data is already sent to XRay as "segments". Ideally the next layer of granularity that we needed is "sub-segments". The simplest way to add subsegments with annotations and meta data is as below
-    ```sh
-    subsegment = xray_recorder.begin_subsegment('user_activities_start')
-    #Add annotation
-    subsegment.put_annotation('id',12345)
-    #add meta data
-    dict={
-      "now":now.isoformat(),
-      "results-size":len(model['data'])
-    }
-    subsegment.put_metadata('results',dict,'dataset')
-    xray_recorder.end_subsegment()
+  
+So I tried to figure this out on my own. https://docs.aws.amazon.com/xray-sdk-for-python/latest/reference/basic.html was a useful resource. In referring that I realised that there was no need to declare segments. we only need to create segments if the framework does not support them. The data is already sent to XRay as "segments". Ideally the next layer of granularity that we needed is "sub-segments". The simplest way to add subsegments with annotations and meta data is as below
+
+```sh
+subsegment = xray_recorder.begin_subsegment('user_activities_start')
+#Add annotation
+subsegment.put_annotation('id',12345)
+#add meta data
+dict={
+    "now":now.isoformat(),
+    "results-size":len(model['data'])
+}
+subsegment.put_metadata('results',dict,'dataset')
+xray_recorder.end_subsegment()
+```
+
+Additionally we can use the decorator to identify our endpoint. xray_recorder generates a subsegment for the decorated function
+
+```sh
+@app.route("/api/activities/@<string:handle>", methods=['GET'])
+@xray_recorder.capture('activities_user')
+def data_handle(handle):
+model = UserActivities.run(handle)
+if model['errors'] is not None:
+    return model['errors'], 422
+else:
+    return model['data'], 200
+
     ```
 
-    Additionally we can use the decorator to identify our endpoint. xray_recorder generates a subsegment for the decorated function
+By adding the above 2 things to my codebase I was able to get subsegment details in my XRay Trace as shown
 
-    ```sh
-    @app.route("/api/activities/@<string:handle>", methods=['GET'])
-    @xray_recorder.capture('activities_user')
-    def data_handle(handle):
-    model = UserActivities.run(handle)
-    if model['errors'] is not None:
-        return model['errors'], 422
-    else:
-        return model['data'], 200
-
-     ```
-
-    By adding the above 2 things to my codebase I was able to get subsegment details in my XRay Trace as shown
-    ![XRay Subsegment Setup](/journal/images/Week2-XRaySubSegment.png)
+![XRay Subsegment Setup](/journal/images/Week2-XRaySubSegment.png)
 
 
     
