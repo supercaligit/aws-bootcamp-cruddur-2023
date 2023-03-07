@@ -3,33 +3,39 @@
 Observability Tools - is a tool designed to monitor systems and applications via monitors, logs. Unlike individual monitoring tools, observability tools enable a business to have constant insight and receive continuous feedback from their systems. This approach to monitoring and logging provides actionable information to businesses faster than tools focusing on only monitoring or logging can. Observability platforms help businesses understand system behavior and predict outages or problems before they occur. Businesses use observability tools to act proactively and prevent system problems.
 OpenTelemetry is a vendor neutral open source standard.
 
-## Homework Tasks
-1. **Instrument our backend flask application to use Open Telemetry (OTEL) with Honeycomb.io as the provider**
+## **Required Homework**
+
+### **Distrbuted Tracing with Honeycomb**
+**Instrument our backend flask application to use Open Telemetry (OTEL) with Honeycomb.io as the provider**
     ![Honeycomb Trace](/journal/images/Week2-Backend_Trace_Honeycomb.png)
-2. **Run queries to explore traces within Honeycomb.io**
+**Run queries to explore traces within Honeycomb.io**
     ![Honeycomb Query](/journal/images/Week2-Query_Honeycomb.png)
-3. **Instrument AWS X-Ray into backend flask application**
-4. **Configure and provision X-Ray daemon within docker-compose and send data back to X-Ray API**
-5. **Observe X-Ray traces within the AWS Console**
+
+### **Distrbuted Tracing with AWS Xray**
+**Instrument AWS X-Ray into backend flask application**
+**Configure and provision X-Ray daemon within docker-compose and send data back to X-Ray API**
+**Observe X-Ray traces within the AWS Console**
     ![XRay Trace](/journal/images/Week2-XRay%20Trace.png)
-6. **Integrate Rollbar for Error Logging**
-7. **Trigger an error an observe an error with Rollbar**
-8. **Install WatchTower and write a custom logger to send application log data to CloudWatch Log group**
 
+### **Logging with Rollbar**
+**Integrate Rollbar for Error Logging**
+**Trigger an error an observe an error with Rollbar**
 
+### **Logging with AWS CloudWatch**
+**Install WatchTower and write a custom logger to send application log data to CloudWatch Log group**
 
 
 
 ## Homework Challenges
-1. **Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]**
+**Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]**
 
-2. **Add custom instrumentation to Honeycomb to add more attributes eg. UserId, Add a custom span**
+**Add custom instrumentation to Honeycomb to add more attributes eg. UserId, Add a custom span**
 
-3. **Run custom queries in Honeycomb and save them later eg. Latency by UserID, Recent Traces**
+**Run custom queries in Honeycomb and save them later eg. Latency by UserID, Recent Traces**
 
     ![Honeycomb Query](/journal/images/Week2-SaveQuery_Honeycomb.io.png)
 
-4. **Setup segments and subsegments in XRay**
+**Setup segments and subsegments in XRay**
     
     So I tried to figure this out on my own. https://docs.aws.amazon.com/xray-sdk-for-python/latest/reference/basic.html was a useful resource. In referring that I realised that there was no need to declare segments. we only need to create segments if the framework does not support them. The data is already sent to XRay as "segments". Ideally the next layer of granularity that we needed is "sub-segments". The simplest way to add subsegments with annotations and meta data is as below
     ```sh
