@@ -68,7 +68,7 @@ if model['errors'] is not None:
 else:
     return model['data'], 200
 
-    ```
+```
 
 By adding the above 2 things to my codebase I was able to get subsegment details in my XRay Trace as shown
 
