@@ -66,7 +66,13 @@ OpenTelemetry is a vendor neutral open source standard.
         # send exceptions from `app` to rollbar, using flask's signal system.
         got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
     ```
-
+7. Add to backend-flask for `docker-compose.yml`
+    ```yml
+    ROLLBAR_ACCESS_TOKEN: "${ROLLBAR_ACCESS_TOKEN}"
+    ```
+    
+8. On compose up,you can hit the endpoint `/rollbar/test` or cause an error, and all activity will be logged into rollbar
+    ![Rollbar](/journal/images/Week%202-Rollbar.png)
 
 
 ### **Logging with AWS CloudWatch**
