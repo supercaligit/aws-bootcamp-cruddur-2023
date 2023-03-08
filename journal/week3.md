@@ -13,13 +13,14 @@ We need to install Amplify to use the javascript library for AWS Cognito.
 https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/
 
 1. **Install AWS Amplify**
-install in `frontend-react-js` directory
---save adds it to the package.json because we need it in production
-```py
-cd frontend-react-js/
-npm i aws-amplify --save
+    install in `frontend-react-js` directory
+    --save adds it to the package.json because we need it in production
+    ```py
+    cd frontend-react-js/
+    npm i aws-amplify --save
 ```
 2. **Configure Amplify**
+
 We need to hook up our cognito pool to our code in the `App.js`
 The env vars with REACT_APP_ are named because React expects that and will autoload these. 
 ```js
