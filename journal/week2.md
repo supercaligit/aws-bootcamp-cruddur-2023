@@ -28,7 +28,66 @@ OpenTelemetry is a vendor neutral open source standard.
 
 ### **Logging with AWS CloudWatch**
 **Install WatchTower and write a custom logger to send application log data to CloudWatch Log group**
+1. add to the requirements.txt
+    ```sh
+    watchtower
+    ```
+2. 
+    ```sh
+    cd backend-flask
+    pip install -r requirements.txt
+    ```
+3. In `app.py`
+    ```py
+    import watchtower
+    import logging
+    from time import strftime
+    ```
+4.  In `app.py` add following
+    ```py
+    # Configuring Logger to Use CloudWatch
+    LOGGER = logging.getLogger(__name__)
+    LOGGER.setLevel(logging.DEBUG)
+    console_handler = logging.StreamHandler()
+    cw_handler = watchtower.CloudWatchLogHandler(log_group='cruddur')
+    LOGGER.addHandler(console_handler)
+    LOGGER.addHandler(cw_handler)
+    LOGGER.info("some message")
 
+    ...
+    ...
+
+    @app.after_request
+    def after_request(response):
+        timestamp = strftime('[%Y-%b-%d %H:%M]')
+        LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
+        return response
+
+    ..
+    ..
+    ..
+
+    @app.route("/api/activities/home", methods=['GET'])
+    def data_home():
+    data = HomeActivities.run(logger=LOGGER)
+    return data, 200
+    ```
+5.  Log in home_activities
+    ```py
+    class HomeActivities:
+        def run(logger):
+            logger.info("HomeActivities")
+            with tracer.start_as_current_span("home-activities-mock-data"):
+
+    ```
+6. Set env vars in `docker-compose.yml`
+    ```py
+      AWS_DEFAULT_REGION: "${AWS_DEFAULT_REGION}"
+      AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+    ```
+7. Logs will appear in AWS Cloudwatch under Log Groups `cruddur`
+    ![Cloudwatch Logs](/journal/images/Week2-CloudWatchLogs.png)
 
 
 ## Homework Challenges

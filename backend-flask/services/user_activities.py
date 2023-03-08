@@ -23,14 +23,14 @@ class UserActivities:
       }]
       model['data'] = results
 
-    subsegment = xray_recorder.begin_subsegment('user_activities_start')
+    #subsegment = xray_recorder.begin_subsegment('user_activities_start')
     #Add annotation
-    subsegment.put_annotation('id',12345)
+    #subsegment.put_annotation('id',12345)
     #add meta data
-    dict={
-      "now":now.isoformat(),
-      "results-size":len(model['data'])
-    }
-    subsegment.put_metadata('results',dict,'dataset')
-    xray_recorder.end_subsegment()
+    #dict={
+    #  "now":now.isoformat(),
+    #  "results-size":len(model['data'])
+    #}
+    #subsegment.put_metadata('results',dict,'dataset')
+    #xray_recorder.end_subsegment()
     return model
