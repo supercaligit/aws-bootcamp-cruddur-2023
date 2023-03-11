@@ -61,7 +61,8 @@ https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/
     });
 
     ```
-3. **Conditionally show components based on logged in or logged out**
+### UI Changes
+1. **Conditionally show components based on logged in or logged out**
     Inside our `HomeFeedPage.js`
 
     ```
@@ -110,7 +111,7 @@ https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/
       }
     }
     ```
-5. **Implement Custom Signin Page**
+2. **Implement Custom Signin Page**
     ```
     import { Auth } from 'aws-amplify';
 
@@ -133,7 +134,7 @@ https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/
         return false
     }
     ```
-6.  **Manually add user to the Cognito user pool and setup a temp password.When you login you will get "Cannot read properties pf null(reading'accessToken')".The user created is in "password change pending" state so permanently rest password uding from CLI command.**
+3.  **Manually add user to the Cognito user pool and setup a temp password.When you login you will get "Cannot read properties pf null(reading'accessToken')".The user created is in "password change pending" state so permanently rest password uding from CLI command.**
     ```sh
     aws cognito-idp admin-set-user-password \
       --user-pool-id <your-user-pool-id> \
@@ -141,9 +142,11 @@ https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/
       --permanent
       --password <password> \
     ```
-7. **Confirm Custom Sign-In Page Works**
+4. **Confirm Custom Sign-In Page Works**
 
-8. **Implement Custom Sign-Up Page**
+     ![User signin](/journal/images/Week3-CruddurLogin.png)
+
+5. **Implement Custom Sign-Up Page**
     ```
     import { Auth } from 'aws-amplify'; //replace import Cookies from 'js-cookie'
 
@@ -173,7 +176,7 @@ https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/
     }
 
     ```
-9. #Implement Custom Confirmation Page#
+6. #Implement Custom Confirmation Page#
     ```
     import { Auth } from 'aws-amplify'; //replace import Cookies from 'js-cookie'
 
@@ -208,7 +211,7 @@ https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/
       return false
     }
     ```
-10. **Implement Custom Recovery Page**
+7. **Implement Custom Recovery Page**
     ```
     import { Auth } from 'aws-amplify';
 
@@ -240,3 +243,5 @@ https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/
 
 
 ## Homework Challenges
+
+1. **Extract Email from url on Confirmationpage**
