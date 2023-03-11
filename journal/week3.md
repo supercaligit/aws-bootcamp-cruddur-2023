@@ -110,7 +110,7 @@ const signOut = async () => {
   }
 }
 ```
-5. **Signin Page**
+5. **Implement Custom Signin Page**
     ```
     import { Auth } from 'aws-amplify';
 
@@ -143,7 +143,7 @@ const signOut = async () => {
     ```
 7. **Confirm Custom Sign-In Page Works**
 
-8. #Signup Page#
+8. **Implement Custom Sign-Up Page**
     ```
     import { Auth } from 'aws-amplify'; //replace import Cookies from 'js-cookie'
 
@@ -173,7 +173,7 @@ const signOut = async () => {
     }
 
     ```
-9. #Confirmation page#
+9. #Implement Custom Confirmation Page#
     ```
     import { Auth } from 'aws-amplify'; //replace import Cookies from 'js-cookie'
 
@@ -208,10 +208,33 @@ const signOut = async () => {
       return false
     }
     ```
-### Implement Custom Sign-In Page
-### Implement Custom Sign-Up Page
-### Implement Custom Confirmation Page
-### Implement Custom Recovery Page
+10. **Implement Custom Recovery Page**
+    ```
+    import { Auth } from 'aws-amplify';
+
+    const onsubmit_send_code = async (event) => {
+      event.preventDefault();
+      setErrors('')
+      Auth.forgotPassword(username)
+      .then((data) => setFormState('confirm_code') )
+      .catch((err) => setErrors(err.message) );
+      return false
+    }
+
+    const onsubmit_confirm_code = async (event) => {
+      event.preventDefault();
+      setErrors('')
+      if (password == passwordAgain){
+        Auth.forgotPasswordSubmit(username, code, password)
+        .then((data) => setFormState('success'))
+        .catch((err) => setErrors(err.message) );
+      } else {
+        setErrors('Passwords do not match')
+      }
+      return false
+    }
+    ```
+
 
 
 
