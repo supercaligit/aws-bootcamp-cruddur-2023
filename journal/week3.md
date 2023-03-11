@@ -116,7 +116,14 @@ const signOut = async () => {
         return false
     }
     ```
-
+6. 
+```sh
+aws cognito-idp admin-set-user-password \
+  --user-pool-id <your-user-pool-id> \
+  --username <username> \
+  --password <password> \
+  --permanent
+```
 ### Implement Custom Sign-In Page
 ### Implement Custom Sign-Up Page
 ### Implement Custom Confirmation Page
