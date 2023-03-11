@@ -244,4 +244,7 @@ https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/
 
 ## Homework Challenges
 
-1. **Extract Email from url on Confirmationpage**
+1. **Extract Email from url on Confirmation page**
+
+   https://mytechsolutions.hashnode.dev/how-to-extract-parameter-value-from-query-string-in-reactjs
+
