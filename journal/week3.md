@@ -7,6 +7,23 @@
 In AWS Console create the Coginot User Pool
 User Pool - when you want to manage users in your app
 Federated Identity Pool - when you use third party Identity
+- Authentication providers - 
+  - Provider types- select `Cognito User Pools`
+  - Cognito user pool sign-in options - select `Email` only
+- Password policy
+  - Password policy mode - select `Cognito defaults`
+  - Multi Factor Authentication - select `No MFA`
+  - User account recovery - leave default
+- Configure sign-up experience
+  - Self-service sign-up - leave default
+  - Attribute verification and user account confirmation - leave default
+  - Required attributes - select `name` and `preferred_username`
+- Email
+  - Email provider - select `Send email with Cognito`
+- Integrate your app
+  - User pool name - enter `cruddur-user-pool`
+  - App client name - enter `cruddur`
+
 
 ### AWS Amplify
 We need to install Amplify to use the javascript library for AWS Cognito.
@@ -116,20 +133,85 @@ const signOut = async () => {
         return false
     }
     ```
-6. 
-```sh
-aws cognito-idp admin-set-user-password \
-  --user-pool-id <your-user-pool-id> \
-  --username <username> \
-  --password <password> \
-  --permanent
-```
+6.  **Manually add user to the Cognito user pool and setup a temp password.When you login you will get "Cannot read properties pf null(reading'accessToken')".The user created is in "password change pending" state so permanently rest password uding from CLI command.**
+    ```sh
+    aws cognito-idp admin-set-user-password \
+      --user-pool-id <your-user-pool-id> \
+      --username <username> \
+      --permanent
+      --password <password> \
+    ```
+7. **Confirm Custom Sign-In Page Works**
+
+8. #Signup Page#
+    ```
+    import { Auth } from 'aws-amplify'; //replace import Cookies from 'js-cookie'
+
+    const onsubmit = async (event) => {
+      event.preventDefault();
+      setErrors('')
+      try {
+          const { user } = await Auth.signUp({
+            username: email,
+            password: password,
+            attributes: {
+                name: name,
+                email: email,
+                preferred_username: username,
+            },
+            autoSignIn: { // optional - enables auto sign in after user is confirmed
+                enabled: true,
+            }
+          });
+          console.log(user);
+          window.location.href = `/confirm?email=${email}`
+      } catch (error) {
+          console.log(error);
+          setErrors(error.message)
+      }
+      return false
+    }
+
+    ```
+9. #Confirmation page#
+    ```
+    import { Auth } from 'aws-amplify'; //replace import Cookies from 'js-cookie'
+
+    const resend_code = async (event) => {
+      setCognitoErrors('')
+      try {
+        await Auth.resendSignUp(email);
+        console.log('code resent successfully');
+        setCodeSent(true)
+      } catch (err) {
+        // does not return a code
+        // does cognito always return english
+        // for this to be an okay match?
+        console.log(err)
+        if (err.message == 'Username cannot be empty'){
+          setErrors("You need to provide an email in order to send Resend Activiation Code")   
+        } else if (err.message == "Username/client id combination not found."){
+          setErrors("Email is invalid or cannot be found.")   
+        }
+      }
+    }
+
+    const onsubmit = async (event) => {
+      event.preventDefault();
+      setErrors('')
+      try {
+        await Auth.confirmSignUp(email, code);
+        window.location.href = "/"
+      } catch (error) {
+        setErrors(error.message)
+      }
+      return false
+    }
+    ```
 ### Implement Custom Sign-In Page
 ### Implement Custom Sign-Up Page
 ### Implement Custom Confirmation Page
 ### Implement Custom Recovery Page
-
-
 
 
 
