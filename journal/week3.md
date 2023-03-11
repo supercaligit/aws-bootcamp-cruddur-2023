@@ -32,7 +32,8 @@ https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/
 1. **Install AWS Amplify**
 
     install in `frontend-react-js` directory
-    --save adds it to the package.json because we need it in production
+    `--save` adds it to the package.json because we need it in production
+
     ```py
     cd frontend-react-js/
     npm i aws-amplify --save
@@ -241,8 +242,7 @@ https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/
 ### Authenticating Server Side
 
   1. Add in the `HomeFeedPage.js` a header eto pass along the access token
-
-    ```js
+   ```
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`
       }
@@ -273,9 +273,8 @@ https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/
     Add to `requirements.txt`
     ```
       Flask-AWSCognito
-
-
     ```
+
   4. Create `cognito_jwt_token.py`
      ```py
       import time
