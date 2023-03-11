@@ -242,11 +242,12 @@ https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/
 ### Authenticating Server Side
 
   1. Add in the `HomeFeedPage.js` a header eto pass along the access token
-   ```
+
+      ```
       headers: {
         Authorization: `Bearer ${localStorage.getItem("access_token")}`
       }
-    ```
+      ```
 
  2. In the app.py
     ```py
@@ -432,44 +433,44 @@ https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/
 
      ```
   6. In `homeactivities.py`
-    ```py
-      ..
-      ..
-      def run(cognito_user_id=None):
+      ```py
+        ..
+        ..
+        def run(cognito_user_id=None):
 
-      ..
-      ..
-      if cognito_user_id != None:
-        extra_crud = {
-          'uuid': '248959df-3079-4947-b847-9e0892d1bab4',
-          'handle':  'Lore',
-          'message': 'My dear brother, it the humans that are the problem',
-          'created_at': (now - timedelta(hours=1)).isoformat(),
-          'expires_at': (now + timedelta(hours=12)).isoformat(),
-          'likes': 1042,
-          'replies': []
-        }
-        results.insert(0,extra_crud)
+        ..
+        ..
+        if cognito_user_id != None:
+          extra_crud = {
+            'uuid': '248959df-3079-4947-b847-9e0892d1bab4',
+            'handle':  'Lore',
+            'message': 'My dear brother, it the humans that are the problem',
+            'created_at': (now - timedelta(hours=1)).isoformat(),
+            'expires_at': (now + timedelta(hours=12)).isoformat(),
+            'likes': 1042,
+            'replies': []
+          }
+          results.insert(0,extra_crud)
 
-      span.set_attribute("app.result_length", len(results))
+        span.set_attribute("app.result_length", len(results))
 
-    ```
+      ```
   7. Add to `docker-compose.yml`
-    ```
-      AWS_COGNITO_USER_POOL_ID: "user pool id"
-      AWS_COGNITO_USER_POOL_CLIENT_ID: "user pool client id"   
-    ```
+      ```
+        AWS_COGNITO_USER_POOL_ID: "user pool id"
+        AWS_COGNITO_USER_POOL_CLIENT_ID: "user pool client id"   
+      ```
   8.  In `ProfileInfo.js`
-    ```js
-        try {
-            await Auth.signOut({ global: true });
-            window.location.href = "/"
-            localStorage.removeItem("access_token")
-        } catch (error) {
-            console.log('error signing out: ', error);
-        }
+      ```js
+          try {
+              await Auth.signOut({ global: true });
+              window.location.href = "/"
+              localStorage.removeItem("access_token")
+          } catch (error) {
+              console.log('error signing out: ', error);
+          }
 
-    ```
+      ```
 
 ## Homework Challenges
 
