@@ -478,3 +478,19 @@ https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/
 
    https://mytechsolutions.hashnode.dev/how-to-extract-parameter-value-from-query-string-in-reactjs
 
+
+
+
+
+## Security Module - Ashish
+[video](https://www.youtube.com/watch?v=tEJIeII66pY)
+  - Types
+    - Traditional - username/password, physical
+    - SAML/SingleSignOn- Apple FaceID
+    - OpenId Connect - social credentials(Google,Facebook,Amazon) (Authentication)
+    - OAuth - tag teams with OpenID (Authorization)
+  - Cognito User Pool vs Cognito Identity Pool
+  - AWS WAF - rate limiting,Allow/deny lisy, deny acces from region
+  - AWS Cloud Trail - enable to monitor malicious Cognito behavior
+  - AWS Cognito should only be in the AWS Region that you are lgecally allowed to be holding user data in 
+
